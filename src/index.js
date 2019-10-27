@@ -2,12 +2,12 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 
-import styles from './assets/styles';
+import theme from './assets/theme';
 
 import Routes from './routes';
 
 const App = () => (
-  <ThemeProvider theme={styles}>
+  <ThemeProvider theme={theme}>
     <StatusBar barStyle="dark-content" />
     <Routes />
   </ThemeProvider>
