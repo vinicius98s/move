@@ -20,6 +20,11 @@ const AuthStack = createStackNavigator(
     navigationOptions: {
       headerVisible: false,
     },
+    transitionConfig: () => ({
+      transitionSpec: {
+        duration: 0,
+      },
+    }),
   },
 );
 

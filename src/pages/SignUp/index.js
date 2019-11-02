@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text} from 'react-native';
+
+import InitialAuthScreens from '../../components/InitialAuthScreens';
 
 export default function() {
-  return <Text>SignUp</Text>;
+  return <InitialAuthScreens />;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Dimensions, StatusBar} from 'react-native';
+import {Dimensions, StatusBar, TouchableOpacity} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
 import {
   Container,
@@ -9,38 +10,47 @@ import {
   PagesText,
   FormsWrapper,
   ActionsButton,
-  ForgotPasswordText,
+  ActionsButtonWrapper,
 } from './styles';
 
 import Button from '../Button';
-import Input from '../Input';
 import Logo from '../../assets/Logo';
 import Background from '../../assets/Background';
 
-export default function InitialAuthScreens() {
+function InitialAuthScreens({expandForm, children, navigation}) {
   const {width, height} = Dimensions.get('window');
+
+  const currentRoute = navigation.state.routeName;
+  const signUpScreen = currentRoute === 'SignUp';
 
   return (
     <>
       <Background />
       <Container>
-        <LogoWrapper>
-          <Logo />
-          <LogoText>MOVE</LogoText>
-        </LogoWrapper>
-        <PagesButtons>
-          <PagesText isActive>Login</PagesText>
-          <PagesText>Cadastro</PagesText>
+        {!expandForm && (
+          <LogoWrapper>
+            <Logo />
+            <LogoText>MOVE</LogoText>
+          </LogoWrapper>
+        )}
+        <PagesButtons expandForm={expandForm}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <PagesText isActive={currentRoute === 'Login'}>Login</PagesText>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+            <PagesText isActive={signUpScreen}>Cadastro</PagesText>
+          </TouchableOpacity>
         </PagesButtons>
-        <FormsWrapper>
-          <Input placeholder="Email" icon="email-outline" />
-          <Input placeholder="Senha" icon="lock-outline" />
-          <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
-        </FormsWrapper>
+        <FormsWrapper>{children}</FormsWrapper>
         <ActionsButton width={width} height={height - StatusBar.currentHeight}>
-          <Button title="Entrar" />
+          <ActionsButtonWrapper signUpScreen={signUpScreen}>
+            {signUpScreen && <Button title="Cancelar" variant="secondary" />}
+            <Button title={signUpScreen ? 'Próximo' : 'Entrar'} />
+          </ActionsButtonWrapper>
         </ActionsButton>
       </Container>
     </>
   );
 }
+
+export default withNavigation(InitialAuthScreens);

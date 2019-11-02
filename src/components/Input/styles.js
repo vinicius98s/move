@@ -20,6 +20,8 @@ export const TextInput = styled.TextInput.attrs({
   border-radius: 25;
   border-width: 1;
   padding-left: 54;
-  border-color: ${({theme}) => theme.colors.lightGrey};
-  font-style: italic;
+  border-color: ${({theme, isActive}) =>
+    isActive ? theme.colors.orange : theme.colors.lightGrey};
+  font-style: ${({hasValue}) => (hasValue ? 'normal' : 'italic')};
+  font-family: 'Roboto-Regular';
 `;

@@ -12,14 +12,22 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		163FA20F315349E6BF51BF2A /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5752C3956C234224A1DDED48 /* Roboto-Italic.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* moveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* moveTests.m */; };
 		471823603BA88B9076CF2AF6 /* libPods-move-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0945C55BED588320FAEC9 /* libPods-move-tvOS.a */; };
+		657B8C77485E4F83B6A825C6 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CA2FA6FDAA941DC8D17C21A /* Nunito-Regular.ttf */; };
 		7C457A7AFC8186D6413FAD94 /* libPods-moveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 694C3CE9A875999D63D2F02F /* libPods-moveTests.a */; };
+		804C5E01CA3A4C93A6E16BC5 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1518C9EE8994A59ABE30880 /* Nunito-Bold.ttf */; };
 		89FBBDFDAD9046C9331AAB41 /* libPods-move.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E013D5744F9FC4A5A3CEB9 /* libPods-move.a */; };
+		8B9927306294446D9E9937AE /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 563CA693C5F146BF9B4587C3 /* Roboto-Bold.ttf */; };
+		B7B5826C6F184FB5978C5978 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87D389756E5A48188A2BA9A6 /* Roboto-Regular.ttf */; };
 		D6B1C13FC8DA6B83F42BEE3E /* libPods-move-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EC07252681D54C7FC950069 /* libPods-move-tvOSTests.a */; };
+		E0960DA07AFA42F1A82D3ED7 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCAE003021924D078938F493 /* Nunito-Light.ttf */; };
+		F0DA5EFC2E3A4F99BC298788 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F06313C4497454E83515382 /* Roboto-Light.ttf */; };
+		FA64420FAB3D435587F88285 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A05B2A4B0804A33A270DD9D /* Roboto-LightItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,12 +64,20 @@
 		2D02E47B1E0B4A5D006451C7 /* move-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "move-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* move-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "move-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC07252681D54C7FC950069 /* libPods-move-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-move-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F06313C4497454E83515382 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		3A05B2A4B0804A33A270DD9D /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		3CA2FA6FDAA941DC8D17C21A /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../src/assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		51C466D0CC8AF859CB346554 /* Pods-move-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-move-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-move-tvOS/Pods-move-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		563CA693C5F146BF9B4587C3 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		5752C3956C234224A1DDED48 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		674D0F1F4C7762D30183CA81 /* Pods-move-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-move-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-move-tvOSTests/Pods-move-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		694C3CE9A875999D63D2F02F /* libPods-moveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709CB29B2BB4DB7E3697D3BC /* Pods-moveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moveTests.release.xcconfig"; path = "Target Support Files/Pods-moveTests/Pods-moveTests.release.xcconfig"; sourceTree = "<group>"; };
+		87D389756E5A48188A2BA9A6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A4918F5648B1024E83B09E8F /* Pods-move.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-move.release.xcconfig"; path = "Target Support Files/Pods-move/Pods-move.release.xcconfig"; sourceTree = "<group>"; };
 		AAC72FF6235B521DA821229D /* Pods-move-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-move-tvOS.release.xcconfig"; path = "Target Support Files/Pods-move-tvOS/Pods-move-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		B1518C9EE8994A59ABE30880 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../src/assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		BCAE003021924D078938F493 /* Nunito-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Light.ttf"; path = "../src/assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; };
 		CEE0945C55BED588320FAEC9 /* libPods-move-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-move-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E013D5744F9FC4A5A3CEB9 /* libPods-move.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-move.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8FACA6FE6794FEE030DF6A /* Pods-move.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-move.debug.xcconfig"; path = "Target Support Files/Pods-move/Pods-move.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +181,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B583B02F52AC6E4841F4C452 /* Pods */,
+				A5A3326DB3B740E990ABEB26 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -182,6 +199,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A5A3326DB3B740E990ABEB26 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B1518C9EE8994A59ABE30880 /* Nunito-Bold.ttf */,
+				BCAE003021924D078938F493 /* Nunito-Light.ttf */,
+				3CA2FA6FDAA941DC8D17C21A /* Nunito-Regular.ttf */,
+				563CA693C5F146BF9B4587C3 /* Roboto-Bold.ttf */,
+				5752C3956C234224A1DDED48 /* Roboto-Italic.ttf */,
+				2F06313C4497454E83515382 /* Roboto-Light.ttf */,
+				87D389756E5A48188A2BA9A6 /* Roboto-Regular.ttf */,
+				3A05B2A4B0804A33A270DD9D /* Roboto-LightItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		B583B02F52AC6E4841F4C452 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +226,6 @@
 				27DB617FCD8F6EB1F1DEB0AC /* Pods-moveTests.debug.xcconfig */,
 				709CB29B2BB4DB7E3697D3BC /* Pods-moveTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -285,7 +316,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -338,6 +369,14 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				804C5E01CA3A4C93A6E16BC5 /* Nunito-Bold.ttf in Resources */,
+				E0960DA07AFA42F1A82D3ED7 /* Nunito-Light.ttf in Resources */,
+				657B8C77485E4F83B6A825C6 /* Nunito-Regular.ttf in Resources */,
+				8B9927306294446D9E9937AE /* Roboto-Bold.ttf in Resources */,
+				163FA20F315349E6BF51BF2A /* Roboto-Italic.ttf in Resources */,
+				F0DA5EFC2E3A4F99BC298788 /* Roboto-Light.ttf in Resources */,
+				B7B5826C6F184FB5978C5978 /* Roboto-Regular.ttf in Resources */,
+				FA64420FAB3D435587F88285 /* Roboto-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,9 +13,13 @@ export const LogoText = styled.Text`
   color: ${({theme}) => theme.colors.lightGrey};
   font-size: 40;
   margin-left: 10;
+  font-family: 'Nunito-Bold';
 `;
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView.attrs({
+  enabled: true,
+  behavior: 'padding',
+})`
   flex: 1;
   z-index: 1;
   padding-left: 20;
@@ -27,7 +31,7 @@ export const PagesButtons = styled.View`
   justify-content: space-between;
   padding-left: 20;
   padding-right: 20;
-  margin-top: 60;
+  margin-top: ${({expandForm}) => (expandForm ? 20 : 60)};
   width: 100%;
   height: 30;
 `;
@@ -36,6 +40,7 @@ export const PagesText = styled.Text`
   color: ${({isActive, theme}) =>
     isActive ? theme.colors.white : theme.colors.lightGrey};
   font-size: 22;
+  font-family: 'Nunito-Regular';
 `;
 
 export const FormsWrapper = styled.View.attrs({
@@ -48,7 +53,6 @@ export const FormsWrapper = styled.View.attrs({
   padding-left: 20;
   height: 265;
   width: 100%;
-  justify-content: space-around;
 `;
 
 export const ActionsButton = styled.View`
@@ -62,8 +66,10 @@ export const ActionsButton = styled.View`
   align-items: center;
 `;
 
-export const ForgotPasswordText = styled.Text`
-  color: #2e2e2e;
-  font-style: italic;
-  align-self: flex-end;
+export const ActionsButtonWrapper = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: ${({signUpScreen}) =>
+    signUpScreen ? 'space-between' : 'center'};
+  align-items: center;
 `;
