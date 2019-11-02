@@ -1,6 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
-export default function() {
-  return <Text>Login</Text>;
+import InitialAuthScreens from '../../components/InitialAuthScreens';
+
+export default function Login() {
+  return (
+    <SafeAreaView>
+      <InitialAuthScreens />
+    </SafeAreaView>
+  );
 }

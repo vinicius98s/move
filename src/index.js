@@ -8,7 +8,10 @@ import Routes from './routes';
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <StatusBar barStyle="dark-content" />
+    <StatusBar
+      barStyle="light-content"
+      backgroundColor={theme.colors.darkBlue}
+    />
     <Routes />
   </ThemeProvider>
 );

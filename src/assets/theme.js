@@ -4,5 +4,7 @@ export default {
     orange: '#F16D22',
     white: '#FFFFFF',
     darkBlue: '#33333F',
+    darkGrey: '#343440',
+    lightGrey: '#D9D9D9',
   },
 };
