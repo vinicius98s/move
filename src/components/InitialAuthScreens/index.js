@@ -23,6 +23,8 @@ function InitialAuthScreens({expandForm, children, navigation}) {
   const currentRoute = navigation.state.routeName;
   const signUpScreen = currentRoute === 'SignUp';
 
+  const navigateToLogin = () => navigation.navigate('Login');
+
   return (
     <>
       <Background />
@@ -34,7 +36,7 @@ function InitialAuthScreens({expandForm, children, navigation}) {
           </LogoWrapper>
         )}
         <PagesButtons expandForm={expandForm}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={navigateToLogin}>
             <PagesText isActive={currentRoute === 'Login'}>Login</PagesText>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
@@ -44,7 +46,13 @@ function InitialAuthScreens({expandForm, children, navigation}) {
         <FormsWrapper>{children}</FormsWrapper>
         <ActionsButton width={width} height={height - StatusBar.currentHeight}>
           <ActionsButtonWrapper signUpScreen={signUpScreen}>
-            {signUpScreen && <Button title="Cancelar" variant="secondary" />}
+            {signUpScreen && (
+              <Button
+                onPress={navigateToLogin}
+                title="Voltar"
+                variant="secondary"
+              />
+            )}
             <Button title={signUpScreen ? 'Próximo' : 'Entrar'} />
           </ActionsButtonWrapper>
         </ActionsButton>

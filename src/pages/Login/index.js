@@ -13,18 +13,22 @@ export default function Login({navigation}) {
 
   console.tron.log(navigation);
 
-  const handleKeyboard = () => {
-    setIsKeyboardShown(!isKeyboardShown);
+  const handleKeyboardShow = () => {
+    setIsKeyboardShown(true);
+  };
+
+  const handleKeyboardHide = () => {
+    setIsKeyboardShown(false);
   };
 
   useEffect(() => {
     const keyboardDidShow = Keyboard.addListener(
       'keyboardDidShow',
-      handleKeyboard,
+      handleKeyboardShow,
     );
     const keyboardDidHide = Keyboard.addListener(
       'keyboardDidHide',
-      handleKeyboard,
+      handleKeyboardHide,
     );
 
     return () => {
