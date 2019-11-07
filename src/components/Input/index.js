@@ -4,9 +4,25 @@ import PropTypes from 'prop-types';
 
 import {InputWrapper, TextInput, InputIcon} from './styles';
 
-function Input({theme, icon, ...props}) {
+function Input({theme, icon, onFocus, onBlur, ...props}) {
   const [isActive, setIsActive] = useState(false);
   const {orange, darkBlue} = theme.colors;
+
+  const handleOnFocus = () => {
+    if (onFocus && typeof onFocus === 'function') {
+      onFocus();
+    }
+
+    setIsActive(true);
+  };
+
+  const handleOnBlur = () => {
+    if (onBlur && typeof onBlur === 'function') {
+      onBlur();
+    }
+
+    setIsActive(false);
+  };
 
   return (
     <InputWrapper>
@@ -20,8 +36,8 @@ function Input({theme, icon, ...props}) {
         {...props}
         hasValue={!!props.value}
         isActive={isActive}
-        onFocus={() => setIsActive(true)}
-        onBlur={() => setIsActive(false)}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
       />
     </InputWrapper>
   );
@@ -30,6 +46,8 @@ function Input({theme, icon, ...props}) {
 Input.propTypes = {
   icon: PropTypes.string.isRequired,
   theme: PropTypes.object,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default withTheme(Input);

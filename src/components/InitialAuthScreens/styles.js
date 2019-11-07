@@ -31,7 +31,7 @@ export const PagesButtons = styled.View`
   justify-content: space-between;
   padding-left: 20;
   padding-right: 20;
-  margin-top: ${({expandForm}) => (expandForm ? 20 : 60)};
+  margin-top: ${({preventKeyboard}) => (preventKeyboard ? 20 : 60)};
   width: 100%;
   height: 30;
 `;
@@ -51,7 +51,8 @@ export const FormsWrapper = styled.View.attrs({
   margin-top: 20;
   padding-right: 20;
   padding-left: 20;
-  height: 265;
+  height: ${({expandForm}) => (expandForm ? 390 : 265)};
+  overflow: hidden;
   width: 100%;
 `;
 

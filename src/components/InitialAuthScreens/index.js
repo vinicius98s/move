@@ -17,7 +17,12 @@ import Button from '../Button';
 import Logo from '../../assets/Logo';
 import Background from '../../assets/Background';
 
-function InitialAuthScreens({expandForm, children, navigation}) {
+function InitialAuthScreens({
+  expandForm,
+  preventKeyboard,
+  children,
+  navigation,
+}) {
   const {width, height} = Dimensions.get('window');
 
   const currentRoute = navigation.state.routeName;
@@ -29,13 +34,13 @@ function InitialAuthScreens({expandForm, children, navigation}) {
     <>
       <Background />
       <Container>
-        {!expandForm && (
+        {!preventKeyboard && (
           <LogoWrapper>
             <Logo />
             <LogoText>MOVE</LogoText>
           </LogoWrapper>
         )}
-        <PagesButtons expandForm={expandForm}>
+        <PagesButtons preventKeyboard={preventKeyboard}>
           <TouchableOpacity onPress={navigateToLogin}>
             <PagesText isActive={currentRoute === 'Login'}>Login</PagesText>
           </TouchableOpacity>
@@ -43,7 +48,7 @@ function InitialAuthScreens({expandForm, children, navigation}) {
             <PagesText isActive={signUpScreen}>Cadastro</PagesText>
           </TouchableOpacity>
         </PagesButtons>
-        <FormsWrapper>{children}</FormsWrapper>
+        <FormsWrapper expandForm={expandForm}>{children}</FormsWrapper>
         <ActionsButton width={width} height={height - StatusBar.currentHeight}>
           <ActionsButtonWrapper signUpScreen={signUpScreen}>
             {signUpScreen && (
