@@ -3,11 +3,13 @@ import {ActivityIndicator} from 'react-native';
 import {withTheme} from 'styled-components';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import asyncStorageKeys from '../../utils/asyncStorageKeys';
+
 import {Container} from './styles';
 
 const AuthLoading = ({navigation, theme}) => {
   const handleAuth = async () => {
-    const authToken = await AsyncStorage.getItem('authToken');
+    const authToken = await AsyncStorage.getItem(asyncStorageKeys.authToken);
     navigation.navigate(authToken ? 'App' : 'Auth');
   };
 

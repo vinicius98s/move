@@ -1,5 +1,10 @@
 import React from 'react';
-import {Dimensions, StatusBar, TouchableOpacity} from 'react-native';
+import {
+  Dimensions,
+  StatusBar,
+  TouchableOpacity,
+  NativeModules,
+} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 import {
@@ -22,8 +27,18 @@ function InitialAuthScreens({
   preventKeyboard,
   children,
   navigation,
+  handleLogin,
 }) {
   const {width, height} = Dimensions.get('window');
+  let statusBarHeight = 0;
+  if (StatusBar.currentHeight) {
+    statusBarHeight = StatusBar.currentHeight;
+  } else {
+    const {StatusBarManager} = NativeModules;
+    StatusBarManager.getHeight(
+      ({height: nativeModuleHeight}) => (statusBarHeight = nativeModuleHeight),
+    );
+  }
 
   const currentRoute = navigation.state.routeName;
   const signUpScreen = currentRoute === 'SignUp';
@@ -49,16 +64,20 @@ function InitialAuthScreens({
           </TouchableOpacity>
         </PagesButtons>
         <FormsWrapper expandForm={expandForm}>{children}</FormsWrapper>
-        <ActionsButton width={width} height={height - StatusBar.currentHeight}>
+        <ActionsButton width={width} height={height - statusBarHeight}>
           <ActionsButtonWrapper signUpScreen={signUpScreen}>
-            {signUpScreen && (
-              <Button
-                onPress={navigateToLogin}
-                title="Voltar"
-                variant="secondary"
-              />
+            {signUpScreen ? (
+              <>
+                <Button
+                  onPress={navigateToLogin}
+                  title="Voltar"
+                  variant="secondary"
+                />
+                <Button onPress={handleLogin} title="Próximo" />
+              </>
+            ) : (
+              <Button onPress={handleLogin} title="Entrar" />
             )}
-            <Button title={signUpScreen ? 'Próximo' : 'Entrar'} />
           </ActionsButtonWrapper>
         </ActionsButton>
       </Container>
