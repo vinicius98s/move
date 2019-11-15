@@ -28,6 +28,8 @@ function InitialAuthScreens({
   children,
   navigation,
   handleLogin,
+  handleSignUp,
+  loading,
 }) {
   const {width, height} = Dimensions.get('window');
   let statusBarHeight = 0;
@@ -73,10 +75,14 @@ function InitialAuthScreens({
                   title="Voltar"
                   variant="secondary"
                 />
-                <Button onPress={handleLogin} title="Próximo" />
+                <Button
+                  onPress={handleSignUp}
+                  loading={loading}
+                  title="Próximo"
+                />
               </>
             ) : (
-              <Button onPress={handleLogin} title="Entrar" />
+              <Button onPress={handleLogin} title="Entrar" loading={loading} />
             )}
           </ActionsButtonWrapper>
         </ActionsButton>

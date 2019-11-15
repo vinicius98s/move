@@ -51,7 +51,7 @@ export const FormsWrapper = styled.View.attrs({
   margin-top: 20;
   padding-right: 20;
   padding-left: 20;
-  height: ${({expandForm}) => (expandForm ? 390 : 265)};
+  height: ${({expandForm}) => (expandForm ? 400 : 270)};
   overflow: hidden;
   width: 100%;
 `;

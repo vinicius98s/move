@@ -13,57 +13,55 @@ import {
 import InitialAuthScreens from '../../components/InitialAuthScreens';
 import Input from '../../components/Input';
 import useKeyboard from '../../utils/useKeyboard';
-import {validateEmail, validatePassword} from '../../utils/validateForm';
+import {
+  handleEmailValidation,
+  handlePasswordValidation,
+} from '../../utils/validateForm';
 import asyncStorageKeys from '../../utils/asyncStorageKeys';
 import api from '../../services/api';
 
 function Login({navigation}) {
+  const [errorLogging, setErrorLogging] = useState('');
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState({value: '', isValid: false, message: ''});
   const [password, setPassword] = useState({
     value: '',
     isValid: false,
     message: '',
   });
-  const [errorLogging, setErrorLogging] = useState(false);
 
   const isKeyboardShown = useKeyboard();
 
-  const handleFormValidation = () => {
-    setErrorLogging(false);
-    const emailValidation = validateEmail(email.value);
-    const passwordValidation = validatePassword(password.value);
+  const emailValidation = () =>
+    handleEmailValidation(email, setEmail, () => setErrorLogging(false));
 
-    setPassword({
-      ...password,
-      isValid: passwordValidation.isValid,
-      message: passwordValidation.message,
-    });
-
-    setEmail({
-      ...email,
-      isValid: emailValidation.isValid,
-      message: emailValidation.message,
-    });
-
-    handleLogin();
-  };
+  const passwordValidation = () =>
+    handlePasswordValidation(password, setPassword, () =>
+      setErrorLogging(false),
+    );
 
   const handleLogin = async () => {
-    if (email.isValid && password.isValid) {
+    const isEmailValid = emailValidation();
+    const isPasswordValid = passwordValidation();
+
+    if (isEmailValid && isPasswordValid) {
+      setLoading(true);
       try {
-        const response = await api.post('/sessions', {
+        const {data} = await api.post('/sessions', {
           email: email.value,
           password: password.value,
         });
 
-        if (response.data.token) {
-          // await AsyncStorage.setItem(asyncStorageKeys.authToken, data.token);
-          console.tron.log(response.data.token);
+        if (data.token) {
+          await AsyncStorage.setItem(asyncStorageKeys.authToken, data.token);
+          navigation.navigate('Home');
         }
       } catch (err) {
         const errorMessage =
           err.response.data.error || 'Erro desconhecido. Tente novamente';
         setErrorLogging(errorMessage);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -71,7 +69,8 @@ function Login({navigation}) {
   return (
     <InitialAuthScreens
       preventKeyboard={isKeyboardShown}
-      handleLogin={handleFormValidation}>
+      handleLogin={handleLogin}
+      loading={loading}>
       <Container>
         <InputsWrapper>
           <Input
@@ -79,8 +78,9 @@ function Login({navigation}) {
             icon="email-outline"
             value={email.value}
             onChangeText={text =>
-              setEmail({value: text, isValid: false, message: ''})
+              setEmail({isValid: false, message: '', value: text})
             }
+            onBlur={emailValidation}
             autoCompleteType="email"
             keyboardType="email-address"
             textContentType="emailAddress"
@@ -96,8 +96,9 @@ function Login({navigation}) {
             icon="lock-outline"
             value={password.value}
             onChangeText={text =>
-              setPassword({value: text, isValid: false, message: ''})
+              setPassword({isValid: false, message: '', value: text})
             }
+            onBlur={passwordValidation}
             secureTextEntry
             autoCorrect={false}
             autoCapitalize="none"
@@ -108,7 +109,7 @@ function Login({navigation}) {
           />
         </InputsWrapper>
         <FormActionsWrapper>
-          {errorLogging && <LoginError>{errorLogging}</LoginError>}
+          {!!errorLogging && <LoginError>{errorLogging}</LoginError>}
           <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
         </FormActionsWrapper>
       </Container>

@@ -1,14 +1,25 @@
 import React from 'react';
+import {ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {ButtonWrapper, ButtonTitle} from './styles';
 
-export default function Button({onPress, variant, title}) {
+export default function Button({onPress, variant, title, loading}) {
   const secondary = variant === 'secondary';
 
+  const handleOnPress = () => {
+    if (!loading) {
+      onPress();
+    }
+  };
+
   return (
-    <ButtonWrapper onPress={onPress} secondary={secondary}>
-      <ButtonTitle secondary={secondary}>{title}</ButtonTitle>
+    <ButtonWrapper onPress={handleOnPress} secondary={secondary}>
+      {loading ? (
+        <ActivityIndicator size="large" color="#fff" />
+      ) : (
+        <ButtonTitle secondary={secondary}>{title}</ButtonTitle>
+      )}
     </ButtonWrapper>
   );
 }

@@ -1,6 +1,11 @@
 import React from 'react';
-import {Text} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {Text, TouchableOpacity} from 'react-native';
 
-export default function() {
-  return <Text>Home</Text>;
+export default function({navigation}) {
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('FirstLogin')}>
+      <Text>Home</Text>
+    </TouchableOpacity>
+  );
 }

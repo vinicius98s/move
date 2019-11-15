@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
+import FirstLogin from './pages/FirstLogin';
 
 import AuthLoading from './pages/AuthLoading';
 
@@ -14,6 +15,7 @@ const AuthStack = createStackNavigator(
   {
     Login,
     SignUp,
+    FirstLogin,
   },
   {
     headerMode: 'none',

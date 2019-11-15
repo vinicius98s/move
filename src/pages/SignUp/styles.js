@@ -15,3 +15,9 @@ export const InputsWrapper = styled.View`
       bottom: 80;
     `};
 `;
+
+export const SignUpError = styled.Text`
+  color: ${({theme}) => theme.colors.red};
+  font-family: 'Nunito-Regular';
+  margin-left: 5;
+`;
