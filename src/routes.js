@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Wallet from './pages/Wallet';
 import FirstLogin from './pages/FirstLogin';
-
+import Menu from './pages/Menu';
 import AuthLoading from './pages/AuthLoading';
 
 import theme from './assets/theme';
@@ -44,6 +44,15 @@ const AppNavigation = createBottomTabNavigator(
             height="24"
           />
         ),
+      },
+    },
+    Menu: {
+      screen: Menu,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="keypad" fill={tintColor} width="24" height="24" />
+        ),
+        tabBarVisible: false,
       },
     },
   },
