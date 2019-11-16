@@ -35,6 +35,14 @@ function Menu({navigation, theme}) {
   const {width} = Dimensions.get('window');
   const [translateX] = useState(new Animated.Value(-width));
 
+  const triggerAnimation = () =>
+    Animated.timing(translateX, {
+      toValue: 0,
+      easing: Easing.ease,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+
   useEffect(() => {
     const willBlur = navigation.addListener('willBlur', () => {
       Animated.timing(translateX, {
@@ -44,13 +52,12 @@ function Menu({navigation, theme}) {
       }).start();
     });
 
+    if (navigation.isFocused) {
+      triggerAnimation();
+    }
+
     const willFocus = navigation.addListener('willFocus', () => {
-      Animated.timing(translateX, {
-        toValue: 0,
-        easing: Easing.ease,
-        duration: 200,
-        useNativeDriver: true,
-      }).start();
+      triggerAnimation();
     });
 
     return () => {

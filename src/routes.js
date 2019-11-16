@@ -62,6 +62,7 @@ const AppNavigation = createBottomTabNavigator(
       showLabel: false,
       style: {
         backgroundColor: theme.colors.darkBlue,
+        height: 60,
       },
     },
   },
