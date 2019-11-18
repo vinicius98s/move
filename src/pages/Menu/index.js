@@ -21,6 +21,7 @@ import {
   MenuItem,
   MenuIcon,
   MenuText,
+  HideSplash,
 } from './styles';
 
 import {MENU_LIST} from './constants';
@@ -39,7 +40,7 @@ function Menu({navigation, theme}) {
     Animated.timing(translateX, {
       toValue: 0,
       easing: Easing.ease,
-      duration: 200,
+      duration: 300,
       useNativeDriver: true,
     }).start();
 
@@ -67,33 +68,35 @@ function Menu({navigation, theme}) {
   });
 
   return (
-    <Animated.View style={{...styles.container, translateX}}>
-      <Container>
-        <Header>
-          <PhotoProfile />
-          <PersonInfo>
-            <PersonName>Vinicius Sales</PersonName>
-            <ViewProfile>visualizar perfil</ViewProfile>
-          </PersonInfo>
-          <CloseButtonWrapper>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Icon
-                name="close-outline"
-                width="30"
-                height="30"
-                fill={theme.colors.black}
-              />
-            </TouchableOpacity>
-          </CloseButtonWrapper>
-        </Header>
-        {MENU_LIST.map(menu => (
-          <MenuItem key={menu.title}>
-            <MenuIcon name={menu.icon} fill={theme.colors.orange} />
-            <MenuText>{menu.title}</MenuText>
-          </MenuItem>
-        ))}
-      </Container>
-    </Animated.View>
+    <HideSplash>
+      <Animated.View style={{...styles.container, translateX}}>
+        <Container>
+          <Header>
+            <PhotoProfile />
+            <PersonInfo>
+              <PersonName>Vinicius Sales</PersonName>
+              <ViewProfile>visualizar perfil</ViewProfile>
+            </PersonInfo>
+            <CloseButtonWrapper>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Icon
+                  name="close-outline"
+                  width="30"
+                  height="30"
+                  fill={theme.colors.black}
+                />
+              </TouchableOpacity>
+            </CloseButtonWrapper>
+          </Header>
+          {MENU_LIST.map(menu => (
+            <MenuItem key={menu.title}>
+              <MenuIcon name={menu.icon} fill={theme.colors.orange} />
+              <MenuText>{menu.title}</MenuText>
+            </MenuItem>
+          ))}
+        </Container>
+      </Animated.View>
+    </HideSplash>
   );
 }
 

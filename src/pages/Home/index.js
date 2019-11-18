@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import {StyleSheet} from 'react-native';
+import {withNavigation} from 'react-navigation';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 
+import {MARKERS} from './constants';
 import {
   Balance,
   BalanceValue,
@@ -11,13 +13,20 @@ import {
   ScanWrapper,
 } from './styles';
 
+import api from '../../services/api';
+import customMapStyle from '../../utils/customMapStyle';
+import formatMoney from '../../utils/formatMoney';
+import getAuthToken from '../../utils/getAuthToken';
+import Helmet from '../../assets/Helmet';
+
 const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
 });
 
-export default function Home() {
+function Home({navigation}) {
+  const [balance, setBalance] = useState(0);
   const [region, setRegion] = useState({
     latitude: -23.6223115,
     longitude: -46.6962498,
@@ -25,34 +34,64 @@ export default function Home() {
     longitudeDelta: 0.015,
   });
 
+  const getBalance = async () => {
+    const authToken = await getAuthToken();
+    const {data} = await api.get('/balance', {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    setBalance(data.balance);
+  };
+
   useEffect(() => {
-    Geolocation.getCurrentPosition(
-      ({coords}) => {
-        setRegion({
-          ...region,
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-      },
-      error => {
-        console.tron.log(error);
-      },
-      {enableHighAccuracy: true, timeout: 90000, maximumAge: 60000},
-    );
+    getBalance();
+  }, []);
+
+  useEffect(() => {
+    const willFocus = navigation.addListener('willFocus', () => {
+      Geolocation.getCurrentPosition(
+        ({coords}) => {
+          setRegion({
+            ...region,
+            latitude: coords.latitude,
+            longitude: coords.longitude,
+          });
+        },
+        () => {},
+        {enableHighAccuracy: true, timeout: 90000, maximumAge: 60000},
+      );
+    });
+
+    return () => {
+      willFocus.remove();
+    };
   }, []);
 
   return (
     <>
-      <Balance>
-        <BalanceText>Saldo:</BalanceText>
-        <BalanceValue>R$ 99,00</BalanceValue>
-      </Balance>
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         region={region}
         onRegionChangeComplete={regionUpdate => setRegion(regionUpdate)}
-      />
+        customMapStyle={customMapStyle}>
+        {MARKERS.map(mark => (
+          <Marker
+            key={mark.key}
+            coordinate={{
+              latitude: mark.latitude,
+              longitude: mark.longitude,
+            }}>
+            <Helmet />
+          </Marker>
+        ))}
+      </MapView>
+      <Balance>
+        <BalanceText>Saldo:</BalanceText>
+        <BalanceValue>{formatMoney(balance)}</BalanceValue>
+      </Balance>
       <ScanWrapper>
         <ScanButton onPress={() => {}}>
           <BalanceValue>Escanear</BalanceValue>
@@ -61,3 +100,5 @@ export default function Home() {
     </>
   );
 }
+
+export default withNavigation(Home);

@@ -20,22 +20,22 @@ function SignUp({navigation}) {
   const [signUpError, setSignUpError] = useState('');
   const [isLastInputFocused, setIsLastInputFocused] = useState(false);
   const [email, setEmail] = useState({
-    value: 'vinicius.2010.s@gmail.com',
+    value: '',
     isValid: false,
     message: '',
   });
   const [name, setName] = useState({
-    value: 'Vinícius',
+    value: '',
     isValid: false,
     message: '',
   });
   const [password, setPassword] = useState({
-    value: '12345',
+    value: '',
     isValid: false,
     message: '',
   });
   const [confirmPassword, setConfirmPassword] = useState({
-    value: '12345',
+    value: '',
     isValid: false,
     message: '',
   });

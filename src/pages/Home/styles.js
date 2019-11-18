@@ -11,7 +11,7 @@ export const Balance = styled.View`
   top: 20;
   min-width: 170;
   height: 60;
-  z-index: 3;
+  z-index: 999;
 `;
 
 export const BalanceValue = styled.Text`
@@ -34,6 +34,7 @@ export const ScanWrapper = styled.View`
   padding-left: 20;
   bottom: 20;
   align-items: center;
+  z-index: 2;
 `;
 
 export const ScanButton = styled.TouchableOpacity`

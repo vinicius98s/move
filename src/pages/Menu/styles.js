@@ -1,12 +1,18 @@
 import styled from 'styled-components/native';
 import {Icon} from 'react-native-eva-icons';
 
+export const HideSplash = styled.View`
+  flex: 1;
+  background-color: ${({theme}) => theme.colors.white};
+`;
+
 export const Container = styled.ScrollView`
   flex: 1;
   padding-right: 20;
   padding-left: 20;
   padding-top: 20;
   padding-bottom: 20;
+  background-color: ${({theme}) => theme.colors.white};
 `;
 
 export const Header = styled.View`

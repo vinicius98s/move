@@ -1,6 +1,5 @@
-const {format: formatMoney} = new Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-});
+function formatMoney(value) {
+  return `R$ ${value.toFixed(2).replace('.', ',')}`;
+}
 
 export default formatMoney;

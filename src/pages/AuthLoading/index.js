@@ -1,11 +1,8 @@
-import React, {useEffect} from 'react';
-import {ActivityIndicator} from 'react-native';
+import {useEffect} from 'react';
 import {withTheme} from 'styled-components';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import asyncStorageKeys from '../../utils/asyncStorageKeys';
-
-import {Container} from './styles';
 
 const AuthLoading = ({navigation, theme}) => {
   const handleAuth = async () => {
@@ -17,11 +14,7 @@ const AuthLoading = ({navigation, theme}) => {
     handleAuth();
   });
 
-  return (
-    <Container>
-      <ActivityIndicator size="large" color={theme.colors.green} />
-    </Container>
-  );
+  return null;
 };
 
 export default withTheme(AuthLoading);
