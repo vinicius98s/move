@@ -5,10 +5,12 @@ export const Container = styled.View`
   height: 30;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20;
-  margin-top: 20;
+  min-height: 60;
   flex-direction: row;
   position: relative;
+  background-color: ${({theme}) => theme.colors.white};
+  padding-left: 20;
+  padding-right: 20;
 `;
 
 export const Title = styled.Text`
@@ -19,5 +21,5 @@ export const Title = styled.Text`
 
 export const RightIconWrapper = styled.View`
   position: absolute;
-  right: 0;
+  right: 20;
 `;

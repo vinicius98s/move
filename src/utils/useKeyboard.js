@@ -26,7 +26,7 @@ export default function useKeyboard() {
       keyboardDidShow.remove();
       keyboardDidHide.remove();
     };
-  });
+  }, []);
 
   return isKeyboardShown;
 }

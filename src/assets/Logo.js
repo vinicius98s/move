@@ -55,13 +55,13 @@ function Logo({theme, width, height}) {
 }
 
 Logo.defaultProps = {
-  width: '50',
-  height: '50',
+  width: 50,
+  height: 50,
 };
 
 Logo.propTypes = {
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default withTheme(Logo);

@@ -1,6 +1,11 @@
 import styled from 'styled-components/native';
 
-export const Balance = styled.View`
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({theme}) => theme.colors.lightGrey};
+`;
+
+export const Balance = styled.TouchableOpacity`
   background-color: ${({theme}) => theme.colors.white};
   align-items: center;
   justify-content: center;

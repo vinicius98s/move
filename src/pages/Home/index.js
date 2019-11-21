@@ -11,12 +11,12 @@ import {
   BalanceText,
   ScanButton,
   ScanWrapper,
+  Container,
 } from './styles';
 
-import api from '../../services/api';
+import {handleApiRequest} from '../../services/api';
 import customMapStyle from '../../utils/customMapStyle';
 import formatMoney from '../../utils/formatMoney';
-import getAuthToken from '../../utils/getAuthToken';
 import Helmet from '../../assets/Helmet';
 
 const styles = StyleSheet.create({
@@ -28,18 +28,16 @@ const styles = StyleSheet.create({
 function Home({navigation}) {
   const [balance, setBalance] = useState(0);
   const [region, setRegion] = useState({
-    latitude: -23.6223115,
-    longitude: -46.6962498,
+    latitude: null,
+    longitude: null,
     latitudeDelta: 0.015,
     longitudeDelta: 0.015,
   });
 
   const getBalance = async () => {
-    const authToken = await getAuthToken();
-    const {data} = await api.get('/balance', {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
+    const {data} = await handleApiRequest({
+      method: 'get',
+      endpoint: '/balance',
     });
 
     setBalance(data.balance);
@@ -50,7 +48,7 @@ function Home({navigation}) {
   }, []);
 
   useEffect(() => {
-    const willFocus = navigation.addListener('willFocus', () => {
+    if (!region.latitude || !region.longitude) {
       Geolocation.getCurrentPosition(
         ({coords}) => {
           setRegion({
@@ -59,36 +57,42 @@ function Home({navigation}) {
             longitude: coords.longitude,
           });
         },
-        () => {},
-        {enableHighAccuracy: true, timeout: 90000, maximumAge: 60000},
+        () => {
+          setRegion({
+            ...region,
+            latitude: -23.6223115,
+            longitude: -46.6962498,
+          });
+        },
+        {enableHighAccuracy: true, timeout: 3000, maximumAge: 60000},
       );
-    });
-
-    return () => {
-      willFocus.remove();
-    };
+    }
   }, []);
 
   return (
     <>
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        style={styles.map}
-        region={region}
-        onRegionChangeComplete={regionUpdate => setRegion(regionUpdate)}
-        customMapStyle={customMapStyle}>
-        {MARKERS.map(mark => (
-          <Marker
-            key={mark.key}
-            coordinate={{
-              latitude: mark.latitude,
-              longitude: mark.longitude,
-            }}>
-            <Helmet />
-          </Marker>
-        ))}
-      </MapView>
-      <Balance>
+      {region.latitude && region.longitude ? (
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          region={region}
+          onRegionChangeComplete={regionUpdate => setRegion(regionUpdate)}
+          customMapStyle={customMapStyle}>
+          {MARKERS.map(mark => (
+            <Marker
+              key={mark.key}
+              coordinate={{
+                latitude: mark.latitude,
+                longitude: mark.longitude,
+              }}>
+              <Helmet />
+            </Marker>
+          ))}
+        </MapView>
+      ) : (
+        <Container />
+      )}
+      <Balance onPress={() => navigation.navigate('Wallet')}>
         <BalanceText>Saldo:</BalanceText>
         <BalanceValue>{formatMoney(balance)}</BalanceValue>
       </Balance>

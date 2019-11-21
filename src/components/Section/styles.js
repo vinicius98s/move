@@ -2,8 +2,9 @@ import styled from 'styled-components/native';
 
 export const SectionWrapper = styled.View`
   width: 100%;
-  border-bottom-width: 1;
-  border-bottom-color: #b7b7b7;
+  border-bottom-width: ${({noBorderBottom}) => (noBorderBottom ? 0 : 1)};
+  border-top-width: ${({borderTop}) => (borderTop ? 1 : 0)};
+  border-color: #b7b7b7;
   padding-top: 30;
   padding-bottom: 30;
 `;

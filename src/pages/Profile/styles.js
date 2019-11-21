@@ -9,8 +9,6 @@ export const Container = styled.View`
 
 export const ProfileHeader = styled.View`
   flex-direction: row;
-  border-bottom-width: 1;
-  border-bottom-color: #b7b7b7;
   padding-bottom: 20;
   padding-top: 20;
   justify-content: space-between;
@@ -42,7 +40,9 @@ export const ProfileEmail = styled.Text`
   color: #b7b7b7;
 `;
 
-export const StyledIcon = styled(Icon)`
+export const StyledIcon = styled(Icon).attrs(({theme}) => ({
+  fill: theme.colors.orange,
+}))`
   width: 24;
   height: 24;
 `;
@@ -96,4 +96,29 @@ export const ButtonText = styled.Text`
   font-family: 'Roboto-Regular';
   font-size: 16;
   color: #b7b7b7;
+`;
+
+export const RewardsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: ${({last}) => (last ? 0 : 40)};
+`;
+
+export const BadgeWrapper = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BadgeText = styled.Text`
+  font-family: 'Roboto-Regular';
+  font-size: 14;
+  color: #b7b7b7;
+`;
+
+export const BadgeIcon = styled(Icon).attrs(({theme, active}) => ({
+  name: 'award-outline',
+  fill: active ? theme.colors.green : theme.colors.lightGrey,
+}))`
+  width: 50;
+  height: 50;
 `;

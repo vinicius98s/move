@@ -52,3 +52,31 @@ export const AddBalanceText = styled.Text`
   font-family: 'Roboto-Regular';
   font-size: 14;
 `;
+
+export const TransactionWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20;
+  padding-bottom: 20;
+  border-bottom-width: 1;
+  border-top-width: ${({borderTop}) => (borderTop ? 1 : 0)};
+  border-color: ${({theme}) => theme.colors.lightGrey};
+`;
+
+export const TransactionValue = styled.Text`
+  color: ${({theme}) => theme.colors.green};
+  font-size: 22;
+  font-family: 'Roboto-Regular';
+`;
+
+export const TransactionText = styled.Text`
+  font-size: 14;
+  font-family: 'Roboto-Regular';
+  color: #898989;
+`;
+
+export const TransactionInfo = styled.View`
+  align-items: ${({alignment = 'flex-start'}) => alignment};
+  justify-content: center;
+`;

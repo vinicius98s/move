@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {withTheme} from 'styled-components';
 import {withNavigation} from 'react-navigation';
 
 import {
@@ -18,51 +17,73 @@ import {
   TripValue,
   Button,
   ButtonText,
+  RewardsWrapper,
+  BadgeIcon,
+  BadgeWrapper,
+  BadgeText,
 } from './styles';
+
+import {handleApiRequest} from '../../services/api';
 
 import Header from '../../components/PageHeader';
 import Section from '../../components/Section';
 import signOut from '../../utils/signOut';
 
-function SignOut({fillColor, navigation}) {
+function SignOut({navigation}) {
   return (
     <TouchableOpacity onPress={() => signOut(navigation)}>
-      <Icon name="log-out-outline" fill={fillColor} />
+      <Icon name="log-out-outline" />
     </TouchableOpacity>
   );
 }
 
-function Profile({theme, navigation}) {
+function Profile({navigation}) {
+  const [profile, setProfile] = useState({
+    name: '',
+    email: '',
+  });
+
+  const getUserData = async () => {
+    const {data} = await handleApiRequest({method: 'get', endpoint: '/users'});
+
+    setProfile({
+      name: data.name,
+      email: data.email,
+    });
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
     <>
+      <Header
+        title="Seu Perfil"
+        rightIcon={() => <SignOut navigation={navigation} />}
+      />
       <Container>
-        <Header
-          title="Seu Perfil"
-          rightIcon={() => (
-            <SignOut navigation={navigation} fillColor={theme.colors.orange} />
-          )}
-        />
         <ProfileHeader>
           <ProfilePhoto />
           <ProfileInfo>
-            <ProfileName>Vinicius Sales</ProfileName>
-            <ProfileEmail>vinicius.2010.s@gmail.com</ProfileEmail>
+            <ProfileName>{profile.name}</ProfileName>
+            <ProfileEmail>{profile.email}</ProfileEmail>
           </ProfileInfo>
-          <Icon name="edit-outline" fill={theme.colors.orange} />
+          <Icon name="edit-outline" />
         </ProfileHeader>
       </Container>
       <Wrapper>
-        <Section title="Minhas viagens:">
+        <Section title="Minhas viagens:" borderTop>
           <Trip>
             <TripWrapper>
-              <Icon name="map-outline" fill={theme.colors.orange} />
+              <Icon name="map-outline" />
               <TripText>Viagens realizadas:</TripText>
             </TripWrapper>
             <TripValue>12</TripValue>
           </Trip>
           <Trip>
             <TripWrapper>
-              <Icon name="navigation-outline" fill={theme.colors.orange} />
+              <Icon name="navigation-outline" />
               <TripText>Km rodados:</TripText>
             </TripWrapper>
             <TripValue>10 Km</TripValue>
@@ -71,7 +92,35 @@ function Profile({theme, navigation}) {
             <ButtonText>Ver todas</ButtonText>
           </Button>
         </Section>
-        <Section title="Minhas conquistas">
+        <Section title="Minhas conquistas:">
+          <RewardsWrapper>
+            <BadgeWrapper>
+              <BadgeIcon active />
+              <BadgeText>1 km</BadgeText>
+            </BadgeWrapper>
+            <BadgeWrapper>
+              <BadgeIcon active />
+              <BadgeText>2 km</BadgeText>
+            </BadgeWrapper>
+            <BadgeWrapper>
+              <BadgeIcon />
+              <BadgeText>5 km</BadgeText>
+            </BadgeWrapper>
+          </RewardsWrapper>
+          <RewardsWrapper last>
+            <BadgeWrapper>
+              <BadgeIcon active />
+              <BadgeText>1 viagem</BadgeText>
+            </BadgeWrapper>
+            <BadgeWrapper>
+              <BadgeIcon />
+              <BadgeText>5 viagens</BadgeText>
+            </BadgeWrapper>
+            <BadgeWrapper>
+              <BadgeIcon />
+              <BadgeText>10 viagens</BadgeText>
+            </BadgeWrapper>
+          </RewardsWrapper>
           <Button onPress={() => {}}>
             <ButtonText>Ver todas</ButtonText>
           </Button>
@@ -81,4 +130,4 @@ function Profile({theme, navigation}) {
   );
 }
 
-export default withTheme(withNavigation(Profile));
+export default withNavigation(Profile);
