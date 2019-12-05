@@ -26,7 +26,7 @@ export const MENU_LIST = [
   {
     icon: () => <Logo width={20} height={20} />,
     title: 'Sobre o Move',
-    onPress: null,
+    onPress: navigation => navigation.navigate('About'),
   },
   {
     icon: 'question-mark-circle-outline',

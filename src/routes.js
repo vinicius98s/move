@@ -12,6 +12,7 @@ import Wallet from './pages/Wallet';
 import FirstLogin from './pages/FirstLogin';
 import Menu from './pages/Menu';
 import AuthLoading from './pages/AuthLoading';
+import About from './pages/About';
 
 import theme from './assets/theme';
 
@@ -73,6 +74,7 @@ const AuthStack = createStackNavigator(
     Login,
     SignUp,
     FirstLogin,
+    About,
   },
   {
     headerMode: 'none',

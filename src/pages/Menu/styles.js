@@ -15,7 +15,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const Green = styled.View`
-  height: 100%;
+  height: ${({height}) => height};
   width: 80;
   background-color: ${({theme}) => theme.colors.green};
   position: absolute;
@@ -29,10 +29,11 @@ export const Green = styled.View`
 export const Header = styled.View`
   width: 100%;
   flex-direction: row;
-  padding-bottom: 35;
+  padding-bottom: 20;
   border-bottom-width: 1;
   border-bottom-color: #b7b7b7;
-  padding-top: 35;
+  padding-top: 20;
+  margin-bottom: 10;
 `;
 
 export const PersonInfo = styled.View`

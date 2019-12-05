@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 });
 
 function Menu({navigation, theme}) {
-  const {width} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
   const [translateX] = useState(new Animated.Value(-width));
   const [name, setName] = useState('');
   const [error, setError] = useState('');
@@ -130,19 +130,19 @@ function Menu({navigation, theme}) {
               </MenuItem>
             </TouchableOpacity>
           ))}
-          <Green>
-            <CloseButtonWrapper>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Icon
-                  name="close-outline"
-                  width="30"
-                  height="30"
-                  fill={theme.colors.black}
-                />
-              </TouchableOpacity>
-            </CloseButtonWrapper>
-          </Green>
         </Container>
+        <Green height={height}>
+          <CloseButtonWrapper>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon
+                name="close-outline"
+                width="30"
+                height="30"
+                fill={theme.colors.black}
+              />
+            </TouchableOpacity>
+          </CloseButtonWrapper>
+        </Green>
       </Animated.View>
     </HideSplash>
   );
