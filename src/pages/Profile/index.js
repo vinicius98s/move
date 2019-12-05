@@ -29,6 +29,9 @@ import Header from '../../components/PageHeader';
 import Section from '../../components/Section';
 import signOut from '../../utils/signOut';
 
+import Road from '../../assets/badges/Road';
+import TripIcon from '../../assets/badges/Trip';
+
 function SignOut({navigation}) {
   return (
     <TouchableOpacity onPress={() => signOut(navigation)}>
@@ -95,29 +98,29 @@ function Profile({navigation}) {
         <Section title="Minhas conquistas:">
           <RewardsWrapper>
             <BadgeWrapper>
-              <BadgeIcon active />
+              <Road />
               <BadgeText>1 km</BadgeText>
             </BadgeWrapper>
             <BadgeWrapper>
-              <BadgeIcon active />
+              <Road disabled />
               <BadgeText>2 km</BadgeText>
             </BadgeWrapper>
             <BadgeWrapper>
-              <BadgeIcon />
+              <Road disabled />
               <BadgeText>5 km</BadgeText>
             </BadgeWrapper>
           </RewardsWrapper>
           <RewardsWrapper last>
             <BadgeWrapper>
-              <BadgeIcon active />
+              <TripIcon />
               <BadgeText>1 viagem</BadgeText>
             </BadgeWrapper>
             <BadgeWrapper>
-              <BadgeIcon />
+              <TripIcon disabled />
               <BadgeText>5 viagens</BadgeText>
             </BadgeWrapper>
             <BadgeWrapper>
-              <BadgeIcon />
+              <TripIcon disabled />
               <BadgeText>10 viagens</BadgeText>
             </BadgeWrapper>
           </RewardsWrapper>

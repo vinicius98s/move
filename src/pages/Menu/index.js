@@ -23,6 +23,7 @@ import {
   MenuIcon,
   MenuText,
   HideSplash,
+  Green,
 } from './styles';
 import {MENU_LIST} from './constants';
 
@@ -110,16 +111,6 @@ function Menu({navigation, theme}) {
                 </PersonInfo>
               </>
             )}
-            <CloseButtonWrapper>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Icon
-                  name="close-outline"
-                  width="30"
-                  height="30"
-                  fill={theme.colors.black}
-                />
-              </TouchableOpacity>
-            </CloseButtonWrapper>
           </Header>
           {MENU_LIST.map(menu => (
             <TouchableOpacity
@@ -139,6 +130,18 @@ function Menu({navigation, theme}) {
               </MenuItem>
             </TouchableOpacity>
           ))}
+          <Green>
+            <CloseButtonWrapper>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Icon
+                  name="close-outline"
+                  width="30"
+                  height="30"
+                  fill={theme.colors.black}
+                />
+              </TouchableOpacity>
+            </CloseButtonWrapper>
+          </Green>
         </Container>
       </Animated.View>
     </HideSplash>

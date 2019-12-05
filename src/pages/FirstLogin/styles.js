@@ -14,8 +14,8 @@ export const Card = styled.View.attrs({
   height: 85%;
   background: ${({theme}) => theme.colors.white};
   align-items: center;
-  justify-content: flex-end;
-  padding-top: 40;
+  justify-content: space-between;
+  padding-top: 80;
   padding-right: 20;
   padding-bottom: 40;
   padding-left: 20;
@@ -25,6 +25,7 @@ export const CardTitle = styled.Text`
   font-family: 'Nunito-Regular';
   font-size: 22;
   color: ${({theme}) => theme.colors.darkBlue};
+  text-align: center;
 `;
 
 export const CardDescription = styled.Text`
@@ -79,3 +80,5 @@ export const ButtonText = styled.Text`
   color: ${({theme, color}) => theme.colors[color] || theme.colors.darkBlue};
   font-size: 14;
 `;
+
+export const TitleAndDescriptionWrapper = styled.View``;

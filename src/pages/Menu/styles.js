@@ -8,19 +8,31 @@ export const HideSplash = styled.View`
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding-right: 20;
+  height: 100%;
   padding-left: 20;
-  padding-top: 20;
   padding-bottom: 20;
   background-color: ${({theme}) => theme.colors.white};
+`;
+
+export const Green = styled.View`
+  height: 100%;
+  width: 80;
+  background-color: ${({theme}) => theme.colors.green};
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border-left-width: 20;
+  align-items: center;
+  border-color: ${({theme}) => theme.colors.white};
 `;
 
 export const Header = styled.View`
   width: 100%;
   flex-direction: row;
-  padding-bottom: 20;
+  padding-bottom: 35;
   border-bottom-width: 1;
   border-bottom-color: #b7b7b7;
+  padding-top: 35;
 `;
 
 export const PersonInfo = styled.View`
@@ -48,8 +60,7 @@ export const PhotoProfile = styled.View`
 `;
 
 export const CloseButtonWrapper = styled.View`
-  margin-left: auto;
-  margin-top: 15;
+  margin-top: 30;
 `;
 
 export const MenuItem = styled.View`

@@ -17,6 +17,7 @@ import {
   ButtonText,
   CardIndicatorBullet,
   CardIndicatorBulletWrapper,
+  TitleAndDescriptionWrapper,
 } from './styles';
 import {carouselItems} from './constants';
 
@@ -57,8 +58,11 @@ function FirstLogin({navigation}) {
         renderItem={({item}) => (
           <Container>
             <Card>
-              <CardTitle>{item.title}</CardTitle>
-              <CardDescription>{item.description}</CardDescription>
+              {item.illustration}
+              <TitleAndDescriptionWrapper>
+                <CardTitle>{item.title}</CardTitle>
+                <CardDescription>{item.description}</CardDescription>
+              </TitleAndDescriptionWrapper>
             </Card>
           </Container>
         )}
